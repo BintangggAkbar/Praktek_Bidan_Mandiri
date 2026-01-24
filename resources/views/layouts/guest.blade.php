@@ -73,8 +73,18 @@
                         </a>
                     </div>
                     <div class="flex items-center gap-4">
-                        <a href="{{ route('login') }}"
-                            class="text-sm font-medium text-slate-600 hover:text-primary-600 transition">Log in</a>
+                        @auth
+                            @if(Auth::user()->role === 'admin')
+                                <a href="{{ route('admin.dashboard') }}"
+                                    class="text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-md transition">Dashboard</a>
+                            @else
+                                <a href="{{ route('dashboard') }}"
+                                    class="text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-md transition">Dashboard</a>
+                            @endif
+                        @else
+                            <a href="{{ route('login') }}"
+                                class="text-sm font-medium text-slate-600 hover:text-primary-600 transition">Log in</a>
+                        @endauth
                     </div>
                 </div>
             </div>
