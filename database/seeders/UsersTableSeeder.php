@@ -15,38 +15,14 @@ class UsersTableSeeder extends Seeder
     {
         // Admin
         User::create([
-            'username' => 'admin',
-            'nama_lengkap' => 'Administrator Klinik',
-            'email' => 'admin@klinik.test',
-            'password' => Hash::make('password'),
+            'username' => 'admin_IkaHer',
+            'nama_lengkap' => 'Admin Ika',
+            'email' => 'bintang.ggakbar27@gmail.com',
+            'password' => Hash::make('Admin123IkaHer'),
             'role' => 'admin',
             'status' => 'aktif',
             'no_hp' => '081234567890',
             'alamat' => 'Jl. Admin Utama No. 1',
-        ]);
-
-        // Bidan 1
-        User::create([
-            'username' => 'bidan1',
-            'nama_lengkap' => 'Bidan Siti Aminah',
-            'email' => 'bidan1@klinik.test',
-            'password' => Hash::make('password'),
-            'role' => 'bidan',
-            'status' => 'aktif',
-            'no_hp' => '081234567891',
-            'alamat' => 'Jl. Bidan Melati No. 5',
-        ]);
-
-        // Bidan 2
-        User::create([
-            'username' => 'bidan2',
-            'nama_lengkap' => 'Bidan Rina Lestari',
-            'email' => 'bidan2@klinik.test',
-            'password' => Hash::make('password'),
-            'role' => 'bidan',
-            'status' => 'aktif',
-            'no_hp' => '081234567892',
-            'alamat' => 'Jl. Bidan Mawar No. 12',
         ]);
     }
 }

@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UsersTableSeeder::class,
                 //PasiensTableSeeder::class,
-            ObatsTableSeeder::class,
+                //ObatsTableSeeder::class,
             JadwalKlinikTableSeeder::class,
             LayanansTableSeeder::class,
             //RekamMedisTableSeeder::class,
