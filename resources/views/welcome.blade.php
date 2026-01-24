@@ -13,7 +13,7 @@
                 <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                     <div class="sm:text-center lg:text-left">
                         <h1 class="text-4xl tracking-tight font-extrabold text-slate-900 sm:text-5xl md:text-6xl">
-                            <span class="block xl:inline">Layanan Kesehatan 1</span>
+                            <span class="block xl:inline">Layanan Kesehatan</span>
                             <span class="block text-primary-600 xl:inline">Terpercaya untuk Ibu & Anak</span>
                         </h1>
                         <p
@@ -41,13 +41,13 @@
         </div>
         <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-primary-50 flex items-center justify-center">
             <img src="{{ asset('gambar/logo.png') }}" alt="Logo Melati Ika" class="
-                        w-48
-                        sm:w-64
-                        md:w-80
-                        lg:w-[420px]
-                        xl:w-[480px]
-                        object-contain
-                    ">
+                            w-48
+                            sm:w-64
+                            md:w-80
+                            lg:w-[420px]
+                            xl:w-[480px]
+                            object-contain
+                        ">
         </div>
     </div>
 
