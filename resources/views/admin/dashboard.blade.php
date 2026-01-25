@@ -230,13 +230,14 @@
                                                 {{ $log->user->nama_lengkap ?? 'Unknown' }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
-                                                            {{ $log->action == 'login' ? 'bg-green-100 text-green-800' : '' }}
-                                                            {{ $log->action == 'logout' ? 'bg-red-100 text-red-800' : '' }}
-                                                            {{ $log->action == 'create' ? 'bg-blue-100 text-blue-800' : '' }}
-                                                            {{ $log->action == 'read' ? 'bg-gray-100 text-gray-800' : '' }}
-                                                            {{ $log->action == 'update' ? 'bg-yellow-100 text-yellow-800' : '' }}
-                                                            {{ $log->action == 'delete' ? 'bg-red-100 text-red-800' : '' }}">
+                                                <span
+                                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
+                                                                    {{ $log->action == 'login' ? 'bg-green-100 text-green-800' : '' }}
+                                                                    {{ $log->action == 'logout' ? 'bg-red-100 text-red-800' : '' }}
+                                                                    {{ $log->action == 'create' ? 'bg-blue-100 text-blue-800' : '' }}
+                                                                    {{ $log->action == 'read' ? 'bg-gray-100 text-gray-800' : '' }}
+                                                                    {{ $log->action == 'update' ? 'bg-yellow-100 text-yellow-800' : '' }}
+                                                                    {{ $log->action == 'delete' ? 'bg-red-100 text-red-800' : '' }}">
                                                     {{ ucfirst($log->action) }}
                                                 </span>
                                             </td>
@@ -264,7 +265,7 @@
     </div>
 
     @push('scripts')
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="{{ asset('assets/js/chart.min.js') }}"></script>
         <script>
             const ctx = document.getElementById('kunjunganChart').getContext('2d');
             const kunjunganChart = new Chart(ctx, {

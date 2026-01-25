@@ -17,46 +17,13 @@
     </title>
 
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
+    <!-- Local Assets -->
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     <link rel="icon" type="image/png" href="{{ asset('gambar/favicon.png') }}">
 
     <!-- Scripts -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Instrument Sans', 'ui-sans-serif', 'system-ui', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
-                    },
-                    colors: {
-                        primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                        },
-                        secondary: {
-                            50: '#ecfdf5',
-                            100: '#d1fae5',
-                            500: '#10b981',
-                            600: '#059669',
-                        },
-                        'detail-gray': '#f8fafc',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        [x-cloak] {
-            display: none !important;
-        }
-    </style>
+    <script defer src="{{ asset('assets/js/alpine.min.js') }}"></script>
+
 </head>
 
 <body class="font-sans antialiased text-slate-800 bg-white">
