@@ -19,7 +19,7 @@
 
     <!-- Local Assets -->
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
-    <link rel="icon" type="image/png" href="{{ asset('gambar/favicon.png') }}">
+    <link rel="icon" type="image/webp" href="{{ asset('gambar/logo.webp') }}">
 
     <!-- Scripts -->
     <script defer src="{{ asset('assets/js/alpine.min.js') }}"></script>
@@ -43,7 +43,7 @@
             <div class="h-16 border-b border-white/10">
                 <a href="{{ route('admin.dashboard') }}"
                     class="h-full px-4 flex items-center gap-3 font-bold text-xl text-white hover:bg-white/10 transition">
-                    <img src="{{ asset('gambar/logo.png') }}" alt="Logo Melati Ika" class="h-16 w-auto object-contain">
+                    <img src="{{ asset('gambar/logo.webp') }}" alt="Logo Melati Ika" class="h-16 w-auto object-contain">
                     <span>Admin Panel</span>
                 </a>
             </div>

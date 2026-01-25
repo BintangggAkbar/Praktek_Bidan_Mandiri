@@ -40,14 +40,14 @@
             </div>
         </div>
         <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-primary-50 flex items-center justify-center">
-            <img src="{{ asset('gambar/logo.png') }}" alt="Logo Melati Ika" class="
-                            w-48
-                            sm:w-64
-                            md:w-80
-                            lg:w-[420px]
-                            xl:w-[480px]
-                            object-contain
-                        ">
+            <img src="{{ asset('gambar/logo.webp') }}" alt="Logo Melati Ika" class="
+                                w-48
+                                sm:w-64
+                                md:w-80
+                                lg:w-[420px]
+                                xl:w-[480px]
+                                object-contain
+                            ">
         </div>
     </div>
 

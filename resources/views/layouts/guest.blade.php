@@ -19,7 +19,7 @@
 
     <!-- Local Assets -->
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
-    <link rel="icon" type="image/png" href="{{ asset('gambar/favicon.png') }}">
+    <link rel="icon" type="image/webp" href="{{ asset('gambar/logo.webp') }}">
 
     <!-- Scripts -->
     <script defer src="{{ asset('assets/js/alpine.min.js') }}"></script>
@@ -34,7 +34,7 @@
                 <div class="flex justify-between h-16">
                     <div class="flex items-center">
                         <a href="/" class="flex items-center gap-2 font-bold text-xl text-primary-600">
-                            <img src="{{ asset('gambar/logo.png') }}" alt="Logo Melati Ika"
+                            <img src="{{ asset('gambar/logo.webp') }}" alt="Logo Melati Ika"
                                 class="h-16 w-auto object-contain">
                             <span>Melati Ika</span>
                         </a>
