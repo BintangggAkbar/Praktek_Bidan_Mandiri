@@ -107,22 +107,12 @@
                         }
                     </script>
 
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <input id="remember" name="remember" type="checkbox"
-                                class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded">
-                            <label for="remember" class="ml-2 block text-sm text-slate-900">
-                                Ingat Saya
-                            </label>
-                        </div>
-
-                        <div class="text-sm">
-                            <a href="{{ route('password.request') }}"
-                                class="font-medium text-primary-600 hover:text-primary-500">
-                                Lupa password?
-                            </a>
-
-                        </div>
+                    <div class="flex items-center">
+                        <input id="remember" name="remember" type="checkbox"
+                            class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded">
+                        <label for="remember" class="ml-2 block text-sm text-slate-900">
+                            Ingat Saya
+                        </label>
                     </div>
 
                     <div>

@@ -38,7 +38,7 @@ class AdminBidanController extends Controller
             'nama_lengkap' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
             'email' => 'required|email|unique:users',
-            'password' => ['required', 'confirmed', Password::min(8)->mixedCase()->numbers()],
+            'password' => ['required', 'confirmed', Password::min(8)],
             'password_confirmation' => 'required|same:password',
             'no_hp' => 'required|string|max:20',
             'alamat' => 'required|string|max:500',
@@ -70,8 +70,8 @@ class AdminBidanController extends Controller
             'nama_lengkap' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users,username,' . $bidan->id,
             'email' => 'required|email|unique:users,email,' . $bidan->id,
-            'password' => ['nullable', 'confirmed', Password::min(8)->mixedCase()->numbers()], // Nullable for update
-            'password_confirmation' => 'nullable|same:password',
+            'password' => ['nullable', 'confirmed', Password::min(8)], // Nullable for update
+            'password_confirmation' => 'nullable',
             'no_hp' => 'required|string|max:20',
             'alamat' => 'required|string|max:500',
             'status' => 'required|in:aktif,nonaktif',

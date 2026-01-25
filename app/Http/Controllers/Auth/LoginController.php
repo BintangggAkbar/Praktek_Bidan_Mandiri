@@ -30,6 +30,15 @@ class LoginController extends Controller
         $login = $request->input('login');
         $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
+        // Cek apakah user dengan email/username tersebut ada
+        $user = \App\Models\User::where($fieldType, $login)->first();
+
+        if (!$user) {
+            return back()->withErrors([
+                'login' => 'Username atau email tidak ditemukan.',
+            ])->onlyInput('login');
+        }
+
         $credentials = [
             $fieldType => $login,
             'password' => $request->input('password')
@@ -68,8 +77,9 @@ class LoginController extends Controller
             return redirect()->route('dashboard');
         }
 
+        // Jika sampai sini, berarti password salah
         return back()->withErrors([
-            'login' => 'The provided credentials do not match our records.',
+            'password' => 'Password yang Anda masukkan salah.',
         ])->onlyInput('login');
     }
 

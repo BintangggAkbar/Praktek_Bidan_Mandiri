@@ -26,7 +26,8 @@
 </head>
 
 <body class="font-sans antialiased bg-gray-50 text-slate-800">
-    <div x-data="{ sidebarOpen: false }" class="h-screen overflow-hidden flex flex-col md:flex-row relative">
+    <div x-data="{ sidebarOpen: false, profileOpen: false }"
+        class="h-screen overflow-hidden flex flex-col md:flex-row relative">
 
         <!-- Mobile Overlay -->
         <div x-show="sidebarOpen" @click="sidebarOpen = false"
@@ -171,9 +172,44 @@
                         <span class="text-sm font-medium text-white">{{ Auth::user()->nama_lengkap }}</span>
                         <span class="text-xs text-white/80">{{ ucfirst(Auth::user()->role) }}</span>
                     </div>
-                    <div
-                        class="h-10 w-10 rounded-full bg-white flex items-center justify-center text-teal-600 font-bold shadow-sm">
-                        {{ strtoupper(substr(Auth::user()->nama_lengkap, 0, 2)) }}
+                    <div class="relative">
+                        <button @click="profileOpen = !profileOpen"
+                            class="h-10 w-10 rounded-full bg-white flex items-center justify-center text-teal-600 font-bold shadow-sm hover:ring-2 hover:ring-white/50 transition-all cursor-pointer">
+                            {{ strtoupper(substr(Auth::user()->nama_lengkap, 0, 2)) }}
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <div x-show="profileOpen" @click.away="profileOpen = false"
+                            x-transition:enter="transition ease-out duration-100"
+                            x-transition:enter-start="transform opacity-0 scale-95"
+                            x-transition:enter-end="transform opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-75"
+                            x-transition:leave-start="transform opacity-100 scale-100"
+                            x-transition:leave-end="transform opacity-0 scale-95"
+                            class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200"
+                            style="display: none;">
+                            <a href="{{ route('profile.edit') }}"
+                                class="flex items-center gap-2 px-4 py-2 text-sm text-slate-700 hover:bg-gray-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>
+                                Edit Profil
+                            </a>
+                            <hr class="my-1 border-gray-200">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit"
+                                    class="flex w-full items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+                                    </svg>
+                                    Keluar
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </header>

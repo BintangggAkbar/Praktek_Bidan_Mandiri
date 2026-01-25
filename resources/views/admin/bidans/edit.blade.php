@@ -86,6 +86,35 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <!-- Divider untuk Reset Password -->
+                        <div class="sm:col-span-6 border-t border-gray-200 pt-4 mt-2">
+                            <h3 class="text-sm font-medium text-slate-800">Reset Password</h3>
+                            <p class="text-xs text-slate-500 mt-1">Kosongkan jika tidak ingin mengubah password</p>
+                        </div>
+
+                        <!-- Password Baru -->
+                        <div class="sm:col-span-3">
+                            <label for="password" class="block text-sm font-medium text-slate-700">Password Baru</label>
+                            <div class="mt-1">
+                                <input type="password" name="password" id="password" placeholder="Minimal 8 karakter"
+                                    class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border @error('password') border-red-500 @enderror">
+                                @error('password')
+                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Konfirmasi Password -->
+                        <div class="sm:col-span-3">
+                            <label for="password_confirmation" class="block text-sm font-medium text-slate-700">Konfirmasi
+                                Password</label>
+                            <div class="mt-1">
+                                <input type="password" name="password_confirmation" id="password_confirmation"
+                                    placeholder="Ulangi password baru"
+                                    class="shadow-sm focus:ring-primary-500 focus:border-primary-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="px-6 py-4 bg-gray-50 text-right sm:px-6 flex justify-end gap-3">
