@@ -184,12 +184,25 @@
         </div>
     </div>
 
-    <!-- Chart Section -->
-    <div class="mt-8 bg-white overflow-hidden shadow rounded-lg">
-        <div class="p-5">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">Grafik Kunjungan Pasien (7 Hari Terakhir)</h3>
-            <div class="mt-4" style="position: relative; height: 300px;">
-                <canvas id="kunjunganChart"></canvas>
+    <!-- Charts Section -->
+    <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Grafik Kunjungan Pasien -->
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Grafik Kunjungan Pasien (7 Hari Terakhir)</h3>
+                <div class="mt-4" style="position: relative; height: 300px;">
+                    <canvas id="kunjunganChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grafik Pendapatan -->
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="p-5">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Grafik Pendapatan (7 Hari Terakhir)</h3>
+                <div class="mt-4" style="position: relative; height: 300px;">
+                    <canvas id="pendapatanChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -232,12 +245,12 @@
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                 <span
                                                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
-                                                                    {{ $log->action == 'login' ? 'bg-green-100 text-green-800' : '' }}
-                                                                    {{ $log->action == 'logout' ? 'bg-red-100 text-red-800' : '' }}
-                                                                    {{ $log->action == 'create' ? 'bg-blue-100 text-blue-800' : '' }}
-                                                                    {{ $log->action == 'read' ? 'bg-gray-100 text-gray-800' : '' }}
-                                                                    {{ $log->action == 'update' ? 'bg-yellow-100 text-yellow-800' : '' }}
-                                                                    {{ $log->action == 'delete' ? 'bg-red-100 text-red-800' : '' }}">
+                                                                            {{ $log->action == 'login' ? 'bg-green-100 text-green-800' : '' }}
+                                                                            {{ $log->action == 'logout' ? 'bg-red-100 text-red-800' : '' }}
+                                                                            {{ $log->action == 'create' ? 'bg-blue-100 text-blue-800' : '' }}
+                                                                            {{ $log->action == 'read' ? 'bg-gray-100 text-gray-800' : '' }}
+                                                                            {{ $log->action == 'update' ? 'bg-yellow-100 text-yellow-800' : '' }}
+                                                                            {{ $log->action == 'delete' ? 'bg-red-100 text-red-800' : '' }}">
                                                     {{ ucfirst($log->action) }}
                                                 </span>
                                             </td>
@@ -267,6 +280,7 @@
     @push('scripts')
         <script src="{{ asset('assets/js/chart.min.js') }}"></script>
         <script>
+            // Grafik Kunjungan Pasien
             const ctx = document.getElementById('kunjunganChart').getContext('2d');
             const kunjunganChart = new Chart(ctx, {
                 type: 'line',
@@ -275,7 +289,7 @@
                     datasets: [{
                         label: 'Jumlah Kunjungan',
                         data: {!! json_encode($chartValues) !!},
-                        borderColor: 'rgb(14, 165, 233)', // primary-500
+                        borderColor: 'rgb(14, 165, 233)',
                         backgroundColor: 'rgba(14, 165, 233, 0.1)',
                         tension: 0.3,
                         fill: true
@@ -289,6 +303,46 @@
                             beginAtZero: true,
                             ticks: {
                                 stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Grafik Pendapatan
+            const ctx2 = document.getElementById('pendapatanChart').getContext('2d');
+            const pendapatanChart = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: {!! json_encode($chartLabels) !!},
+                    datasets: [{
+                        label: 'Pendapatan (Rp)',
+                        data: {!! json_encode($revenueChartValues) !!},
+                        backgroundColor: 'rgba(34, 197, 94, 0.6)',
+                        borderColor: 'rgb(34, 197, 94)',
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function (value) {
+                                    return 'Rp ' + value.toLocaleString('id-ID');
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return 'Pendapatan: Rp ' + context.parsed.y.toLocaleString('id-ID');
+                                }
                             }
                         }
                     }

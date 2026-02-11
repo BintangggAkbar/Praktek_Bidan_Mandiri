@@ -53,11 +53,36 @@ class AdminDashboardController extends Controller
 
         ksort($dates);
 
+        // DATA GRAFIK PENDAPATAN 7 HARI TERAKHIR
+        $revenueData = MedicalRecord::select(
+            DB::raw('DATE(created_at) as date'),
+            DB::raw('SUM(biaya) as total')
+        )
+            ->whereDate('created_at', '>=', Carbon::today()->subDays(6))
+            ->groupBy('date')
+            ->orderBy('date')
+            ->get();
+
+        $revenueDates = [];
+        for ($i = 6; $i >= 0; $i--) {
+            $date = Carbon::today()->subDays($i)->format('Y-m-d');
+            $revenueDates[$date] = 0;
+        }
+
+        foreach ($revenueData as $data) {
+            if (isset($revenueDates[$data->date])) {
+                $revenueDates[$data->date] = (int) $data->total;
+            }
+        }
+
+        ksort($revenueDates);
+
         // LABEL GRAFIK (HARI + TANGGAL)
         Carbon::setLocale('id');
 
         $chartLabels = [];
         $chartValues = [];
+        $revenueChartValues = [];
 
         foreach ($dates as $date => $count) {
             $carbonDate = Carbon::parse($date);
@@ -65,6 +90,10 @@ class AdminDashboardController extends Controller
             // Contoh: Senin (22 Jan)
             $chartLabels[] = $carbonDate->translatedFormat('l (d M)');
             $chartValues[] = $count;
+        }
+
+        foreach ($revenueDates as $date => $total) {
+            $revenueChartValues[] = $total;
         }
 
         return view('admin.dashboard', compact(
@@ -75,6 +104,7 @@ class AdminDashboardController extends Controller
             'pendapatanBulanIni',
             'chartLabels',
             'chartValues',
+            'revenueChartValues',
             'activityLogs'
         ));
     }
