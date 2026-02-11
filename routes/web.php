@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\AdminReportController;
 use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\Admin\AdminScheduleController;
 use App\Http\Controllers\Admin\AdminMedicalRecordController;
+use App\Http\Controllers\Admin\AdminBackupController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -99,4 +100,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
 
     // Medical Records (Read Only)
     Route::resource('medical-records', AdminMedicalRecordController::class)->only(['index', 'show']);
+
+    // Database Backup
+    Route::get('/backup', [AdminBackupController::class, 'download'])->name('backup.download');
 });
